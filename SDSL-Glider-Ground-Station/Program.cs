@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SDSL_Glider_Ground_Station
+namespace SDSL.GliderGroundStation
 {
     static class Program
     {
@@ -16,7 +16,13 @@ namespace SDSL_Glider_Ground_Station
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var model = new Model.VehicleCommunication();
+            var view = new View.GroundStationForm();
+
+            var presenter = new Presenter.GroundStationPresenter(model, view);
+
+            Application.Run(view);
         }
     }
 }
